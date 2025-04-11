@@ -1,0 +1,37 @@
+name: Update Plugins
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 时间 0:00 运行（北京时间 8:00）
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # 需要写入权限来提交更改
+    
+    steps:
+      - name: 检出代码
+        uses: actions/checkout@v3
+      
+      - name: 设置 Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+      
+      - name: 安装依赖
+        run: |
+          python -m pip install --upgrade pip
+          pip install httpx loguru packaging pythonmonkey ujson
+      
+      - name: 运行更新脚本
+        run: python src/main.py
+      
+      - name: 提交更改
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add dist/
+          git commit -m "自动更新插件列表" || echo "没有变更需要提交"
+          git push
