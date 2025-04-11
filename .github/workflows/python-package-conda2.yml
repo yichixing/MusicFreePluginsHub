@@ -1,0 +1,37 @@
+name: Update Plugins
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * *'  # 每天 UTC 时间 0:00 运行
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  update-plugins:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Set up Python 3.11
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.11'
+    
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -e .
+    
+    - name: Run main.py
+      run: |
+        python src/main.py
+    
+    - name: Commit and push changes
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add dist/
+        git commit -m "Update plugins" -a || echo "No changes to commit"
+        git push
