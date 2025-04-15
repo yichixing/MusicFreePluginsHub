@@ -62,7 +62,7 @@
       "version": "0.0.1"
     },
     {
-      "name": "W音乐",
+      "name": "W音乐_1",
       "url": "https://mf.ikunshare.com/wy/index.js",
       "version": "0.1.3"
     },
@@ -192,7 +192,7 @@
       "version": "0.0.2"
     },
     {
-      "name": "W音乐_1",
+      "name": "W音乐",
       "url": "https://raw.githubusercontent.com/ThomasBy2025/musicfree/refs/heads/main/plugins/wy.js",
       "version": "0.2.3"
     }
