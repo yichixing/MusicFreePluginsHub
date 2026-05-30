@@ -62,6 +62,11 @@
       "version": "0.0.2"
     },
     {
+      "name": "歌曲宝",
+      "url": "https://gitee.com/kevinr/tvbox/raw/master/musicfree/plugins/gequbao.js",
+      "version": "0.0.6"
+    },
+    {
       "name": "书音FM",
       "url": "https://gitee.com/kevinr/tvbox/raw/master/musicfree/plugins/shuyinfm.js",
       "version": "0.3.6"
@@ -104,6 +109,11 @@
     {
       "name": "小枸音乐",
       "url": "https://gitee.com/kevinr/tvbox/raw/master/musicfree/plugins/xiaogou.js",
+      "version": "0.0.2"
+    },
+    {
+      "name": "小芸音乐",
+      "url": "https://gitee.com/kevinr/tvbox/raw/master/musicfree/plugins/xiaoyun.js",
       "version": "0.0.2"
     },
     {
