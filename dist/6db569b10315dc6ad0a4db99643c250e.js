@@ -97,7 +97,8 @@ async function $d6283ddcbc551b94$export$2e074d413efa36c6(platform, musicItem, qu
         params.songmid = musicItem.id || "";
         params.albumName = musicItem.album || "";
     }
-    const doFetch = async (tokenValue)=>{
+    // 注意：不能用 async 箭头函数（安卓 Hermes 引擎不支持），必须用具名 function
+    async function doFetch(tokenValue) {
         return (await (0, ($parcel$interopDefault($hTj9b$axios))).get($d6283ddcbc551b94$var$API_BASE, {
             params: params,
             headers: {
@@ -106,7 +107,7 @@ async function $d6283ddcbc551b94$export$2e074d413efa36c6(platform, musicItem, qu
             },
             timeout: 20000
         })).data;
-    };
+    }
     let tk = await $d6283ddcbc551b94$var$ensureToken();
     if (!tk) return "";
     let data = await doFetch(tk);
@@ -419,7 +420,7 @@ async function $28c810e89c2349b3$var$search(query, page, type) {
 const $28c810e89c2349b3$var$pluginInstance = {
     platform: "小枸音乐",
     author: "SoEasy同学",
-    version: "0.0.3",
+    version: "0.0.4",
     srcUrl: "https://gitee.com/kevinr/tvbox/raw/master/musicfree/plugins/xiaogou.js",
     cacheControl: "no-cache",
     primaryKey: [
